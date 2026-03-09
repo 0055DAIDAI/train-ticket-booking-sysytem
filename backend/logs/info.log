@@ -38,3 +38,5 @@
 2026-03-09 14:10:12.706 [http-nio-10087-exec-5] INFO  o.e.interceptor.AdminJwtInterceptor - token验证成功
 2026-03-09 14:10:15.880 [http-nio-10087-exec-6] INFO  o.e.interceptor.AdminJwtInterceptor - token验证成功
 2026-03-09 14:10:17.015 [http-nio-10087-exec-7] INFO  o.e.interceptor.AdminJwtInterceptor - token验证成功
+2026-03-09 14:36:26.120 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-09 14:36:26.126 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
