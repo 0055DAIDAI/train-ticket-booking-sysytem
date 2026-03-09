@@ -1,0 +1,9 @@
+2026-03-09 14:08:37.257 [http-nio-10087-exec-4] ERROR o.example.controller.AdminController - 登录失败: 密码错误
+2026-03-09 14:08:40.308 [http-nio-10087-exec-5] ERROR o.example.controller.AdminController - 登录失败: 密码错误
+2026-03-09 14:08:44.087 [http-nio-10087-exec-6] ERROR o.example.controller.AdminController - 登录失败: 密码错误
+2026-03-09 14:08:51.543 [http-nio-10087-exec-7] ERROR o.example.controller.AdminController - 登录失败: 密码错误
+2026-03-09 14:08:55.405 [http-nio-10087-exec-8] ERROR o.example.controller.AdminController - 登录失败: 密码错误
+2026-03-09 14:08:58.065 [http-nio-10087-exec-9] ERROR o.example.controller.AdminController - 登录失败: 密码错误
+2026-03-09 14:09:02.019 [http-nio-10087-exec-10] ERROR o.example.controller.AdminController - 登录失败: 密码错误
+2026-03-09 14:10:06.464 [http-nio-10087-exec-1] ERROR o.example.controller.AdminController - 登录失败: 密码错误
+2026-03-09 14:10:09.828 [http-nio-10087-exec-2] ERROR o.example.controller.AdminController - 登录失败: 密码错误

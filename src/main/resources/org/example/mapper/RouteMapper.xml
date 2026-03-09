@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.RouteMapper">
+
+
+    <select id="findAll" resultType="org.example.pojo.Route">
+        SELECT *
+            FROM route
+            ORDER BY id
+    </select>
+
+    <select id="findById" resultType="org.example.pojo.Route">
+        SELECT *
+            FROM route
+            WHERE id = #{id}
+    </select>
+
+    <select id="findByFromName" resultType="org.example.pojo.Route">
+        SELECT id
+            FROM route
+            WHERE from_station_name = #{from}
+    </select>
+
+    <select id="findByToName" resultType="org.example.pojo.Route">
+        SELECT id
+            FROM route
+            WHERE to_station_name = #{to}
+    </select>
+
+    <select id="findByFromAndTo" resultType="org.example.pojo.Route">
+        SELECT *
+            FROM route
+            WHERE from_station_name = #{from}
+            AND to_station_name = #{to}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO route (name, from_station_name, to_station_name)
+        VALUES (#{name}, #{fromStationName}, #{toStationName})
+    </insert>
+
+    <update id="update">
+        UPDATE route
+        SET name = #{name},
+        from_station_name = #{fromStationName},
+        to_station_name = #{toStationName}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM route WHERE id = #{id}
+    </delete>
+
+    <delete id="deleteById">
+        DELETE FROM route WHERE id = #{id}
+    </delete>
+
+
+</mapper>

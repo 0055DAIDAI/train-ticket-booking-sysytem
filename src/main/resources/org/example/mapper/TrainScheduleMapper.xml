@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.TrainScheduleMapper">
+
+    <select id="findByRouteIdAndDate" resultType="org.example.pojo.TrainSchedule">
+        SELECT
+        id, train_number AS trainNumber,
+        date, route_id AS routeId,
+        departure_time AS departureTime,
+        arrival_time AS arrivalTime,
+        ticket_total AS ticketTotal,
+        ticket_sold AS ticketSold,
+        create_time AS createTime,
+        update_time AS updateTime,
+        price
+        FROM train_schedule
+        WHERE route_id = #{routeId}
+        <choose>
+            <when test="date != null">
+                AND date >= #{date}
+            </when>
+            <otherwise>
+                AND date >= CURDATE()
+            </otherwise>
+        </choose>
+        ORDER BY date, departure_time
+    </select>
+
+    <select id="findById" resultType="org.example.pojo.TrainSchedule">
+        SELECT
+        id, train_number AS trainNumber,
+        date, route_id AS routeId,
+        departure_time AS departureTime,
+        arrival_time AS arrivalTime,
+        ticket_total AS ticketTotal,
+        ticket_sold AS ticketSold,
+        create_time AS createTime,
+        update_time AS updateTime,
+        price
+        FROM train_schedule
+        WHERE id = #{id}
+    </select>
+
+    <select id="countAll" resultType="integer">
+        SELECT COUNT(*) FROM train_schedule
+        WHERE Date >= #{date}
+        <if test="routeId != -1">
+            AND route_id = #{routeId}
+        </if>
+    </select>
+
+
+    <select id="findAll" resultType="org.example.pojo.TrainSchedule">
+        SELECT
+        id, train_number AS trainNumber, date, route_id AS routeId,
+        departure_time AS departureTime, arrival_time AS arrivalTime,
+        ticket_total AS ticketTotal, ticket_sold AS ticketSold,
+        create_time AS createTime, update_time AS updateTime,
+        price
+        FROM train_schedule
+    </select>
+
+    <insert id="insert" parameterType="org.example.pojo.TrainSchedule" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO train_schedule (
+        train_number, date, route_id, departure_time, arrival_time,
+        ticket_total, ticket_sold, create_time, update_time, price
+        ) VALUES (
+        #{trainNumber}, #{date}, #{routeId}, #{departureTime}, #{arrivalTime},
+        #{ticketTotal}, #{ticketSold}, #{createTime}, #{updateTime}, #{price}
+        )
+    </insert>
+
+    <update id="update" parameterType="org.example.pojo.TrainSchedule">
+        UPDATE train_schedule
+        SET
+        train_number = #{trainNumber},
+        date = #{date},
+        route_id = #{routeId},
+        departure_time = #{departureTime},
+        arrival_time = #{arrivalTime},
+        ticket_total = #{ticketTotal},
+        price = #{price},
+        update_time = #{updateTime}
+        WHERE id = #{id}
+    </update>
+
+
+
+    <delete id="deleteById">
+        DELETE FROM train_schedule WHERE id = #{id}
+    </delete>
+
+
+</mapper>

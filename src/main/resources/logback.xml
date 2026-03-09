@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 定义日志输出格式 -->
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
+
+    <!-- 定义日志文件存储路径 -->
+    <property name="LOG_DIR" value="./logs"/>
+
+    <!-- 控制台输出 -->
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- INFO 级别日志文件输出 -->
+    <appender name="FileInfo" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/info.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 每天一个文件，最大 100MB，保留 30 天 -->
+            <fileNamePattern>${LOG_DIR}/info.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- ERROR 级别日志文件输出 -->
+    <appender name="FileError" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/error.log</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/error.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 异步日志（提升性能） -->
+    <appender name="AsyncInfo" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="FileInfo"/>
+        <queueSize>256</queueSize>
+        <includeCallerData>false</includeCallerData>
+    </appender>
+
+    <appender name="AsyncError" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="FileError"/>
+        <queueSize>256</queueSize>
+    </appender>
+
+    <!-- 根日志器 -->
+    <root level="INFO">
+        <appender-ref ref="Console"/>
+        <appender-ref ref="AsyncInfo"/>
+        <appender-ref ref="AsyncError"/>
+    </root>
+
+    <!-- 特定包的日志级别（可选） -->
+    <logger name="org.example" level="DEBUG" additivity="false">
+        <appender-ref ref="Console"/>
+        <appender-ref ref="AsyncInfo"/>
+        <appender-ref ref="AsyncError"/>
+    </logger>
+
+    <!-- 第三方库调低日志级别 -->
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="org.hibernate" level="WARN"/>
+    <logger name="org.apache" level="WARN"/>
+
+</configuration>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.AdminMapper">
+
+    <!-- 结果映射：数据库下划线 → Java 驼峰 -->
+    <resultMap id="AdminResultMap" type="org.example.pojo.Admin">
+        <id property="id" column="id"/>
+        <result property="adminName" column="admin_name"/>
+        <result property="password" column="password"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="lastLoginTime" column="last_login_time"/>
+    </resultMap>
+
+    <!-- 根据用户名查询 -->
+    <select id="findByAdminName" resultMap="AdminResultMap">
+        SELECT
+        id, admin_name, password,
+        create_time, update_time, last_login_time
+        FROM admin
+        WHERE admin_name = #{adminName}
+    </select>
+
+    <!-- 根据手机号查询 -->
+    <select id="findByPhone" resultMap="AdminResultMap">
+        SELECT
+        id, admin_name, password,
+        create_time, update_time, last_login_time
+        FROM admin
+        WHERE phone = #{phone}
+    </select>
+
+    <!-- 插入新管理员 -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO admin (
+        admin_name, password,
+        create_time, update_time, last_login_time
+        ) VALUES (
+        #{adminName}, #{password},
+        NOW(), NOW(), NOW()
+        )
+    </insert>
+
+    <!-- 更新最后登录时间 -->
+    <update id="updateLastLogin">
+        UPDATE admin
+        SET last_login_time = #{lastLogin}, update_time = NOW()
+        WHERE id = #{id}
+    </update>
+
+    <!-- 根据ID查询管理员 -->
+    <select id="findById" resultMap="AdminResultMap">
+        SELECT
+        id, admin_name, password,
+        create_time, update_time, last_login_time
+        FROM admin
+        WHERE id = #{id}
+    </select>
+
+    <!-- 更新管理员信息 -->
+    <update id="update">
+        UPDATE admin
+        SET
+        admin_name = #{adminName},
+        update_time = NOW()
+        WHERE id = #{id}
+    </update>
+
+</mapper>

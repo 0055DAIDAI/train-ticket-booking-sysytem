@@ -1,0 +1,39 @@
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+      - org.springframework.boot.actuate.autoconfigure.security.servlet.ManagementWebSecurityAutoConfiguration
+  application:
+    name: train-ticket-system
+
+
+  # 数据源配置（以 MySQL 为例）
+  datasource:
+    url: jdbc:mysql://localhost:3306/train-ticket-system
+    username: root
+    password: 0055xslLCLxingchen
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# 服务器配置
+server:
+  port: 10087
+
+# 自定义日志路径（供 logback 使用）
+logging:
+  config: classpath:logback.xml
+  level:
+    org.springframework: INFO
+    org.example: DEBUG   # 你的包日志级别设为 DEBUG，便于调试
+
+
+aliyun:
+  oss:
+    endpoint: oss-cn-guangzhou.aliyuncs.com
+    bucketName: xingchen-web
+    region: cn-guangzhou
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: org.example.pojo
+  configuration:
+    map-underscore-to-camel-case: true
