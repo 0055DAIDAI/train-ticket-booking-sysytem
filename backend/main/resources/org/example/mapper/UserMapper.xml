@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.UserMapper">
+
+    <!-- 结果映射：数据库下划线 → Java 驼峰 -->
+    <resultMap id="UserResultMap" type="org.example.pojo.User">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="idCard" column="id_card"/>
+        <result property="phone" column="phone"/>
+        <result property="balance" column="balance"/>
+        <result property="avatar" column="avatar"/>
+        <result property="gender" column="gender"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="lastLogin" column="last_login"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <!-- 根据用户名查询 -->
+    <select id="findByUsername" resultMap="UserResultMap">
+        SELECT
+        id, username, password, name, id_card, phone,
+        balance, avatar, gender, create_time, update_time,
+        last_login, status
+        FROM user
+        WHERE username = #{username}
+    </select>
+
+    <!-- 根据手机号查询 -->
+    <select id="findByPhone" resultMap="UserResultMap">
+        SELECT
+        id, username, password, name, id_card, phone,
+        balance, avatar, gender, create_time, update_time,
+        last_login, status
+        FROM user
+        WHERE phone = #{phone}
+    </select>
+
+    <!-- 根据身份证号查询 -->
+    <select id="findByIdCard" resultMap="UserResultMap">
+        SELECT
+        id, username, password, name, id_card, phone,
+        balance, avatar, gender, create_time, update_time,
+        last_login, status
+        FROM user
+        WHERE id_card = #{idCard}
+    </select>
+
+    <!-- 插入新用户 -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user (
+        username, password, name, id_card, phone,
+        balance, avatar, gender, create_time, update_time,
+        last_login, status
+        ) VALUES (
+        #{username}, #{password}, #{name}, #{idCard}, #{phone},
+        #{balance}, #{avatar}, #{gender}, NOW(), NOW(),
+        #{lastLogin}, #{status}
+        )
+    </insert>
+
+    <!-- 更新最后登录时间 -->
+    <update id="updateLastLogin">
+        UPDATE user
+        SET last_login = #{lastLogin}, update_time = NOW()
+        WHERE id = #{id}
+    </update>
+
+    <!-- 根据ID查询用户 -->
+    <select id="findById" resultMap="UserResultMap">
+        SELECT
+        id, username, password, name, id_card, phone,
+        balance,avatar,gender, create_time, update_time,
+        last_login, status
+        FROM user
+        WHERE id = #{id}
+    </select>
+
+    <!-- 更新用户信息 -->
+    <update id="update">
+        UPDATE user
+        SET
+        username = #{username},
+        name =#{name},
+        phone =#{phone},
+        id_card =#{idCard},
+        balance =#{balance},
+        avatar =#{avatar},
+        gender =#{gender},
+        status =#{status},
+        update_time = NOW()
+        WHERE id = #{id}
+    </update>
+
+</mapper>

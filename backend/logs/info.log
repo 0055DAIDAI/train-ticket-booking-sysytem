@@ -1,0 +1,42 @@
+2026-03-09 14:05:34.368 [main] INFO  org.example.App - Starting App using Java 17.0.12 with PID 19696 (D:\java-project\mybatis-test\train-tickt-booking-system\target\classes started by 29733 in D:\java-project\mybatis-test\train-tickt-booking-system)
+2026-03-09 14:05:34.374 [main] INFO  org.example.App - No active profile set, falling back to 1 default profile: "default"
+2026-03-09 14:05:36.860 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 10087 (http)
+2026-03-09 14:05:36.954 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2409 ms
+2026-03-09 14:05:38.623 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-03-09 14:05:38.712 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 10087 (http) with context path ''
+2026-03-09 14:05:38.723 [main] INFO  org.example.App - Started App in 5.126 seconds (process running for 6.118)
+2026-03-09 14:08:01.456 [http-nio-10087-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-09 14:08:01.457 [http-nio-10087-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-03-09 14:08:01.499 [http-nio-10087-exec-1] INFO  o.example.interceptor.JwtInterceptor - 请求头token为空
+2026-03-09 14:08:25.098 [http-nio-10087-exec-2] INFO  o.example.controller.LoginController - 用户登录:username=xingchen,password=005555
+2026-03-09 14:08:25.123 [http-nio-10087-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-09 14:08:25.624 [http-nio-10087-exec-2] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@552be1f9
+2026-03-09 14:08:25.627 [http-nio-10087-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-09 14:08:26.190 [http-nio-10087-exec-3] INFO  o.example.interceptor.JwtInterceptor - token验证成功
+2026-03-09 14:08:26.293 [http-nio-10087-exec-3] INFO  o.e.service.impl.RouteServiceImpl - 搜索结果：[]
+2026-03-09 14:08:26.307 [http-nio-10087-exec-3] INFO  o.example.controller.RouteController - 搜索结果：[]
+2026-03-09 14:08:37.187 [http-nio-10087-exec-4] INFO  o.example.controller.AdminController - 管理员登录:adminName=admin
+2026-03-09 14:08:37.257 [http-nio-10087-exec-4] INFO  o.e.service.impl.AdminServiceImpl - 密码错误
+2026-03-09 14:08:40.248 [http-nio-10087-exec-5] INFO  o.example.controller.AdminController - 管理员登录:adminName=admin
+2026-03-09 14:08:40.308 [http-nio-10087-exec-5] INFO  o.e.service.impl.AdminServiceImpl - 密码错误
+2026-03-09 14:08:44.026 [http-nio-10087-exec-6] INFO  o.example.controller.AdminController - 管理员登录:adminName=admin
+2026-03-09 14:08:44.087 [http-nio-10087-exec-6] INFO  o.e.service.impl.AdminServiceImpl - 密码错误
+2026-03-09 14:08:51.482 [http-nio-10087-exec-7] INFO  o.example.controller.AdminController - 管理员登录:adminName=admin
+2026-03-09 14:08:51.543 [http-nio-10087-exec-7] INFO  o.e.service.impl.AdminServiceImpl - 密码错误
+2026-03-09 14:08:55.347 [http-nio-10087-exec-8] INFO  o.example.controller.AdminController - 管理员登录:adminName=admin
+2026-03-09 14:08:55.405 [http-nio-10087-exec-8] INFO  o.e.service.impl.AdminServiceImpl - 密码错误
+2026-03-09 14:08:58.006 [http-nio-10087-exec-9] INFO  o.example.controller.AdminController - 管理员登录:adminName=admin
+2026-03-09 14:08:58.065 [http-nio-10087-exec-9] INFO  o.e.service.impl.AdminServiceImpl - 密码错误
+2026-03-09 14:09:01.960 [http-nio-10087-exec-10] INFO  o.example.controller.AdminController - 管理员登录:adminName=admin
+2026-03-09 14:09:02.018 [http-nio-10087-exec-10] INFO  o.e.service.impl.AdminServiceImpl - 密码错误
+2026-03-09 14:10:06.404 [http-nio-10087-exec-1] INFO  o.example.controller.AdminController - 管理员登录:adminName=admin
+2026-03-09 14:10:06.464 [http-nio-10087-exec-1] INFO  o.e.service.impl.AdminServiceImpl - 密码错误
+2026-03-09 14:10:09.767 [http-nio-10087-exec-2] INFO  o.example.controller.AdminController - 管理员登录:adminName=admin
+2026-03-09 14:10:09.827 [http-nio-10087-exec-2] INFO  o.e.service.impl.AdminServiceImpl - 密码错误
+2026-03-09 14:10:12.509 [http-nio-10087-exec-3] INFO  o.example.controller.AdminController - 管理员登录:adminName=admin
+2026-03-09 14:10:12.693 [http-nio-10087-exec-4] INFO  o.e.interceptor.AdminJwtInterceptor - token验证成功
+2026-03-09 14:10:12.706 [http-nio-10087-exec-5] INFO  o.e.interceptor.AdminJwtInterceptor - token验证成功
+2026-03-09 14:10:15.880 [http-nio-10087-exec-6] INFO  o.e.interceptor.AdminJwtInterceptor - token验证成功
+2026-03-09 14:10:17.015 [http-nio-10087-exec-7] INFO  o.e.interceptor.AdminJwtInterceptor - token验证成功
+2026-03-09 14:36:26.120 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-09 14:36:26.126 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
